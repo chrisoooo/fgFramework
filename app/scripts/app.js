@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -27,7 +28,35 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/gis', {
+        templateUrl: 'views/gis.html',
+        controller: 'GisCtrl'
+      })
+      .when('/videoSupervison', {
+        templateUrl: 'views/videosupervison.html',
+        controller: 'VideosupervisonCtrl'
+      })
+      .when('/gpsSupervison', {
+        templateUrl: 'views/gpssupervison.html',
+        controller: 'GpssupervisonCtrl'
+      })
+      .when('/videoMantain', {
+        templateUrl: 'views/videomantain.html',
+        controller: 'VideomantainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .run(['$rootScope', '$location', function ($rootScope, $location) {
+    $rootScope.$on('$viewContentLoaded', function () {
+      var url = $location.url(), $ngView = $('[ng-view]');
+
+      if(url.match(/gis$/) || url.match(/gpsSupervison$/)){
+        $ngView.removeClass('default');
+      }else{
+        $ngView.addClass('default');
+      }
+
+    });
+  }]);

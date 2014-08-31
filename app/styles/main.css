@@ -77,3 +77,79 @@ body {
     border-bottom: 0;
   }
 }
+
+/* yhte */
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: "Microsoft YaHei", "Arial", "Verdana", "Tahoma";
+  color: #424242;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Microsoft YaHei UI", "Microsoft YaHei", "Arial", "Verdana", "Tahoma";
+  font-weight: 500;
+}
+
+div[ng-view] {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 50px;
+}
+
+div[ng-view].default {
+  position: static;
+  margin-top: 30px;
+}
+
+div[ng-view] .auto-height, .fg-map{
+  height: 100%;
+}
+
+/*fg-notification-center*/
+div[fg-notification-center] {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 275px;
+  z-index: 1000;
+  overflow: scroll;
+  background-color: #333;
+  font-family: tahoma, arial, 'Hiragino Sans GB', 宋体, sans-serif;
+}
+
+.fg-notification-center-header {
+  text-align: center;
+  color: #fff;
+}
+
+/*widget*/
+.widget .widget-title {
+  background-color: #222;
+  color: #aaa;
+  padding: 5px 10px;
+  font-size: 11px;
+  height: 27px;
+}
+
+.widget .widget-body {
+  padding: 10px 0 10px 35px;
+  color: #eee;
+  font-size: 13px;
+}
+
+.widget .widget-body p {
+  border-top: solid #555 1px;
+  margin: 0;
+  padding: 6px 0;
+}
+
+.widget .widget-body p:first-child {
+  border-top: none;
+}
