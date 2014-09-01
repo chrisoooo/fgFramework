@@ -1,6 +1,25 @@
 // Generated on 2014-08-28 using generator-angular 0.9.5
 'use strict';
 
+var _ = require('underscore');
+//"/java/dicts": "http://172.16.64.59:8080/TP_SYS_WEB/dicts"
+var pattern = /\/\/(.*)\:(\d+)(\/.*)/;
+
+var readProxy = function (config) {
+    return _.map(config, function(val, key) {
+        var r, rw;
+        r = val.match(pattern);
+        rw = {};
+        rw[key] = r[3] || '';
+        return {
+          context: key,
+          host: r[1],
+          port: r[2],
+          rewrite: rw
+        };
+    });
+};
+
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
@@ -68,8 +87,21 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
-        livereload: 35729
+        hostname: '0.0.0.0',
+        livereload: 35729,
+        open: true,
+        middleware: function (connect) {
+          var proxy = require('grunt-connect-proxy/lib/utils').proxyRequest;
+          return [
+            proxy,
+            connect.static('.tmp'),
+            connect().use(
+              '/bower_components',
+              connect.static('./bower_components')
+            ),
+            connect.static(appConfig.app)
+          ];
+        }
       },
       livereload: {
         options: {
@@ -86,6 +118,7 @@ module.exports = function (grunt) {
           }
         }
       },
+      proxies: readProxy(grunt.file.readJSON('proxy.json')),
       test: {
         options: {
           port: 9001,
@@ -369,7 +402,8 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'autoprefixer',
-      'connect:livereload',
+      'configureProxies',
+      'connect:proxies',
       'watch'
     ]);
   });

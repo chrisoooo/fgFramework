@@ -16,6 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
+    'restangular',
     'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
@@ -48,6 +49,9 @@ angular
         redirectTo: '/'
       });
   })
+  .config(['RestangularProvider', function (RestangularProvider){
+    RestangularProvider.setBaseUrl('/java');
+  }])
   .run(['$rootScope', '$location', function ($rootScope, $location) {
     $rootScope.$on('$viewContentLoaded', function () {
       var url = $location.url(), $ngView = $('[ng-view]');

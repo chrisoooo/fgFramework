@@ -8,10 +8,6 @@
  * Controller of the wsdcApp
  */
 angular.module('wsdcApp')
-  .controller('GisCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('GisCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
+    window.Restangular = Restangular;
+  }]);
