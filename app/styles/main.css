@@ -94,6 +94,31 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: 500;
 }
 
+.yhte-ico-primary{
+  color: #3276B1;
+}
+.yhte-ico-success{
+  color: #47A447; 
+}
+.yhte-ico-danger-bright {
+  color: #f00;
+}
+.yhte-ico-success-bright{
+  color: #0f0; 
+}
+.yhte-ico-info{
+  color: #39B3D7;
+}
+.yhte-ico-warning{
+  color: #F0AD4E;
+}
+.yhte-ico-danger{
+  color: #D2321D;
+}
+.yhte-ico-grey{
+  color: #DDD;
+}
+
 div[ng-view] {
   position: absolute;
   bottom: 0;
@@ -117,7 +142,7 @@ div[fg-notification-center] {
   right: 0;
   top: 0;
   bottom: 0;
-  width: 275px;
+  width: 300px;
   z-index: 1000;
   overflow: scroll;
   background-color: #333;
