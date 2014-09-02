@@ -14,6 +14,7 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="bower_components/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
@@ -59,6 +60,8 @@
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="bower_components/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="bower_components/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
         <script src="bower_components/openlayers/2.13-rc5/OpenLayers.js"></script>
         <script src="bower_components/openlayers/yhte/ExDyLayer2.js"></script>
         <script src="bower_components/openlayers/yhte/ExMeasure.js"></script>
@@ -86,6 +89,7 @@
         <script src="scripts/controllers/videomantain.js"></script>
         <script src="scripts/directives/fgevent.js"></script>
         <script src="scripts/directives/fgnotificationcenter.js"></script>
+        <script src="scripts/directives/fgdatetimepicker.js"></script>
         <!-- endbuild -->
 </body>
 </html>
