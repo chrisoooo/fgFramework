@@ -49,17 +49,21 @@ angular
         redirectTo: '/'
       });
   })
-  .config(['RestangularProvider', function (RestangularProvider){
+  .config(function (RestangularProvider){
     RestangularProvider.setBaseUrl('/java');
-  }])
-  .run(['$rootScope', '$location', function ($rootScope, $location) {
+  })
+  .run(['$rootScope', '$location', 'fgMessenger', function ($rootScope, $location, fgMessenger) {
     $rootScope.$on('$viewContentLoaded', function () {
+      //切换视图时关闭所有 Messagebox
+      fgMessenger.hideAll();
+
       var url = $location.url(), $ngView = $('[ng-view]');
 
-      if(url.match(/gis$/) || url.match(/gpsSupervison$/)){
+      if(url.match(/gis$/) || url.match(/gpsSupervison$/) || url.match(/videoSupervison$/)){
         $ngView.removeClass('default');
       }else{
-        $ngView.addClass('default');
+        $ngView.removeClass('default');
+        // $ngView.addClass('default');
       }
 
     });

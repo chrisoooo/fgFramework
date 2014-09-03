@@ -22,6 +22,7 @@
     "angular": false,
     "$": false,
     "OpenLayers": false,
-    "GeoSetup": false
+    "GeoSetup": false,
+    "_": false
   }
 }

@@ -14,7 +14,7 @@ angular.module('wsdcApp')
       var mapCtn = $(el);//.height($scope.height||400);
 
       var map = $scope.map = mapCtn.iMap({
-        bases: ['pgis@http://localhost:9001/tiles'],
+        bases: ['pgis@http://172.16.60.46:9001/rest/pub/1/tiles'],
         extent: GeoSetup.getExtent()//获取地图范围
       });
 

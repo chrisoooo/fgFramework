@@ -178,3 +178,31 @@ div[fg-notification-center] {
 .widget .widget-body p:first-child {
   border-top: none;
 }
+
+ul.messenger.messenger-fixed.messenger-on-top {
+  top: 50px;
+}
+
+ul.messenger.messenger-fixed.messenger-on-top.messenger-on-right, ul.messenger.messenger-fixed.messenger-on-bottom.messenger-on-right{
+  right: 0;
+}
+
+.widget-body .jstree-node {
+  border-bottom: solid 1px #555;
+}
+
+.widget-body .jstree-last{
+  border-bottom: none;
+}
+
+.widget-body .jstree-default .jstree-clicked {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.widget-body .jstree-default .jstree-hovered {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
