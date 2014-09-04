@@ -134,6 +134,7 @@ div[ng-view].default {
 
 div[ng-view] .auto-height, .fg-map{
   height: 100%;
+  padding-top: 15px ;
 }
 
 /*fg-notification-center*/

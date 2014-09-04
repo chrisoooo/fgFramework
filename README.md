@@ -19,6 +19,7 @@
 		});
 
 * `2014.09.03`添加 directive:fgJstree v0.1；
+* `2014.09.03`集成 dangular-loading-bar；
 
 # 使用说明
 

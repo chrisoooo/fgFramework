@@ -1,120 +1,43 @@
-<div class="auto-height">
-  <!-- <button class="btn btn-default" ng-click="add();">点击</button> -->
-  
-  <div fg-jstree ng-model="model" node="record.node" selected="record.nodes">
-  </div>
+<div class="col-sm-12 auto-height">
+  <legend>视频分组</legend>
 
-  <p>{{record.node.text}}</p>
-
-  <ul>
-    <li ng-repeat="node in record.nodes">{{node.text}}</li>
-  </ul>
-</div>
-<div fg-notification-center class="auto-height">
-  
-  <div class="widget">
-    <div class="widget-title">
-      视频列表
-      <div class="pull-right">
-        <i class="fa fa-info-circle"></i>
-      </div>
-    </div>
-    <div class="widget-body" style="padding-left: 26px;">
-      <div fg-jstree ng-model="model" node="record.node" selected="record.nodes">
-      </div>
-      
-      <p>{{record.node.text}}</p>
-
-      <ul>
-        <li ng-repeat="node in record.nodes">{{node.text}}</li>
-      </ul>
-      
+  <div class="row">
+    <div class="col-sm-3" style="margin-bottom: 15px;">
+      <div class="btn-group">
+        <button class="btn btn-success btn-sm">添加</button>
+        <button class="btn btn-danger btn-sm">添加</button>
+      </div>  
     </div>
   </div>
 
-  <div class="widget">
-    <div class="widget-title">
-      视频列表
-      <div class="pull-right">
-        <i class="fa fa-info-circle"></i>
-      </div>
-    </div>
-    <div class="widget-body">
-      <div>
-        <p>苏E12345</p>
-        <p>苏E00312</p>
-        <p>苏E09124</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="widget">
-    <div class="widget-title">
-      视频列表
-      <div class="pull-right">
-        完成
-      </div>
-    </div>
-    <div class="widget-body" style="padding-left:10px;">
-      <table style="width: 100%;">
-        <tbody>
-          <tr>
-            <td style="width: 25px; text-align: center;">
-              <!-- <i class="fa fa-minus-circle"></i> -->
-            </td>
-            <td>
-              <p>苏E12345</p>
-            </td>
-          </tr>
-          <tr>
-            <td  style="width: 25px; text-align: center;padding-top:3px;">
-              <i class="fa fa-minus-circle" style="font-size: 1.2em;"></i>
-            </td>
-            <td>
-              <p style="border-top: solid #555 1px;">苏E12345</p>
-            </td>
-          </tr>
-          <tr>
-            <td  style="width: 25px; text-align: center;padding-top:3px;">
-              <i class="fa fa-minus-circle yhte-ico-danger-bright" style="font-size: 1.2em;"></i>
-            </td>
-            <td>
-              <p style="border-top: solid #555 1px;">苏E09124</p>
-            </td>
-          </tr>
-          <tr>
-            <td  style="width: 25px; text-align: center;padding-top:3px;">
-              <i class="fa fa-plus-circle yhte-ico-success-bright" style="font-size: 1.2em;"></i>
-            </td>
-            <td>
-              <p style="border-top: solid #555 1px;font-size: 12px;color:#aaa;">添加</p>
-            </td>
-          </tr>
-        </tbody>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-bordered table-hover table-condensed">
+        <tr>
+          <th>编号</th>
+          <th>名称</th>
+          <th>性质</th>
+          <th>类型</th>
+          <th>云台</th>
+          <th>位置</th>
+        </tr>
+        <tr>
+          <td>001</td>
+          <td>视频1</td>
+          <td>-</td>
+          <td>普通视频</td>
+          <td><i class="fa fa-check-circle yhte-ico-success"></i></td>
+          <td><i class="fa fa-location-arrow"></i> 泰山路</td>
+        </tr>
+        <tr>
+          <td>002</td>
+          <td>视频2</td>
+          <td>-</td>
+          <td>督查视频</td>
+          <td><i class="fa fa-check-circle yhte-ico-success"></i></td>
+          <td><i class="fa fa-location-arrow"></i> 滨河路</td>
+        </tr>
       </table>
-    </div>
-  </div>
-
-  <div class="widget">
-    <div class="widget-title">
-      视频列表
-      <div class="pull-right">
-        取消
-      </div>
-    </div>
-    <div class="widget-body">
-      <div>
-        <p style="font-size: 10px;color: #aaa;">输入车牌号码</p>
-        <div style="padding-right:35px;margin-bottom: 8px;">
-          <input type="text" placeholder="搜索" 
-          style="background-color: #444;border: solid 1px #555;width:100%;padding: 0 20px;border-radius: 3px;">  
-        </div>
-        <p style="font-size: 10px;color: #aaa;padding: 3px 0;">找不到结果。</p>
-        <p style="font-size: 10px;color: #aaa;padding: 3px 0;">正在查询车辆...</p>
-        <p style="font-size: 10px;color: #aaa;padding: 3px 0;">苏E00000</p>
-        <p style="font-size: 10px;color: #aaa;padding: 3px 0;">苏E00002</p>
-        <p style="font-size: 10px;color: #aaa;padding: 3px 0;">苏E00001</p>
-      </div>
     </div>
   </div>
 

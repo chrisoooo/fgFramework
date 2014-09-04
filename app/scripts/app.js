@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'restangular',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angular-loading-bar'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -44,6 +45,22 @@ angular
       .when('/videoMantain', {
         templateUrl: 'views/videomantain.html',
         controller: 'VideomantainCtrl'
+      })
+      .when('/Bill', {
+        templateUrl: 'views/bill.html',
+        controller: 'BillCtrl'
+      })
+      .when('/Bill', {
+        templateUrl: 'views/bill.html',
+        controller: 'BillCtrl'
+      })
+      .when('/IllegalRecord', {
+        templateUrl: 'views/illegalrecord.html',
+        controller: 'IllegalrecordCtrl'
+      })
+      .when('/Login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
       })
       .otherwise({
         redirectTo: '/'
