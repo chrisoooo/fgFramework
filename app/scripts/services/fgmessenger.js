@@ -50,6 +50,7 @@ angular.module('wsdcApp')
               label: label,
               action: function (){
                 action.apply(this, arguments);
+                this.hide();
                 $rootScope.$apply();
               }
             };

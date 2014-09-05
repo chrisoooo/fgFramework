@@ -8,15 +8,77 @@
  * Controller of the wsdcApp
  */
 angular.module('wsdcApp')
-  .controller('VideosupervisonCtrl', function ($scope, Restangular) {
-    $scope.model = [
-      { 'id' : '1', 'parent' : '#', 'text' : '所有视频' },
-      { 'id' : '2', 'parent' : '#', 'text' : '我的分组' },
-      { 'id' : '3', 'parent' : '2', 'text' : '分组 1'},
-      { 'id' : '4', 'parent' : '2', 'text' : '分组 2'},
-      { 'id' : '5', 'parent' : '3', 'text' : '视频 1', type: 'video' },
-      { 'id' : '6', 'parent' : '4', 'text' : '视频 2', type: 'video' }
-    ];
+  .controller('VideosupervisonCtrl', function ($scope, Restangular, fgMessenger, fgHideMsg) {
+    $scope.videoWidget = {
+      viewStack: 'tree'
+    };
 
-    console.log(Restangular.one('1.json').get());
+    //删除分组
+    $scope.deleteGroup = function (group) {
+      fgMessenger.confirm({
+        message: '确认删除分组「'+group.text+'」吗?',
+        type: 'error',
+        id: 'VideosupervisonCtrl',
+        actions: {
+          'delete': {
+            label: '确认',
+            action: function (){
+              var id = group.baseId;
+
+              Restangular.one('videoGroup/' + id).doDELETE().then(function (){
+                fetchTree();
+              });
+            }
+          },
+          'cancel': {
+            label: '取消'
+          }
+        }
+      });
+    };
+
+    $scope.group = {
+      name: null
+    };
+
+    //新增分组
+    $scope.addGroup = function ($event) {
+      if($event.keyCode !== 13){
+        return;
+      }
+
+      fgMessenger.hideAll();
+
+      if($scope.group.name.length >= 3){
+        var param = {
+          name: $scope.group.name
+        };
+
+        Restangular.one('videoGroup').post('',param).then(function (data){
+
+          $scope.groups.push({
+            id:new Date().getTime(), text: $scope.group.name, parent: 'root2'
+          });
+
+          $scope.videoWidget.viewStack = 'list';
+
+          fetchTree();
+        });
+
+      }
+    };
+
+    var filter = function (item) {
+      return item.parent === 'root2';
+    };
+
+    var fetchTree = function () {
+      Restangular.one('videoGroup/tree/view').get({}, fgHideMsg).then(function (data){
+        $scope.model = data.results;
+
+        $scope.groups = _.filter($scope.model, filter);
+      });
+    };
+
+    fetchTree();
   });

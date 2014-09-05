@@ -79,6 +79,10 @@ module.exports = function (grunt) {
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
+      },
+      html2js: {
+        files: ['<%= yeoman.app %>/templates/*.html', '<%= yeoman.app %>/views/*.html'],
+        tasks: 'html2js'
       }
     },
 
@@ -331,6 +335,18 @@ module.exports = function (grunt) {
       }
     },
 
+    html2js: {
+      options: {
+        base: 'app/',
+        quoteChar: '\'',
+        fileHeaderString: '\'use strict\';'
+      },
+      templates: {
+        src: ['<%= yeoman.app %>/templates/*.html', '<%= yeoman.app %>/views/*.html'],
+        dest: '<%= yeoman.app %>/scripts/templates.js'
+      }
+    },
+
     // Copies remaining files to places other tasks can use
     copy: {
       dist: {
@@ -357,6 +373,23 @@ module.exports = function (grunt) {
           cwd: 'bower_components/bootstrap/dist',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
+        }, 
+        {//font-awesome<rtliu 2014.09.05>
+          expand: true,
+          cwd: 'bower_components/font-awesome/',
+          src: 'fonts/*',
+          dest: '<%= yeoman.dist %>'
+        },
+        {//OpenLayer theme<rtliu 2014.09.05>
+          expand: true,
+          cwd: 'bower_components/openlayers/2.13-rc5/',
+          src: 'theme/*',
+          dest: '<%= yeoman.dist %>/styles/'
+        },{
+          expand: true,
+          cwd: 'bower_components/jstree/dist/themes/default/',
+          src: ['32px.png','throbber.gif'],
+          dest: '<%= yeoman.dist %>/styles/'
         }]
       },
       styles: {
@@ -399,6 +432,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'html2js',
       'wiredep',
       'concurrent:server',
       'autoprefixer',
@@ -430,7 +464,8 @@ module.exports = function (grunt) {
     'concat',
     'ngmin',
     'copy:dist',
-    'cdnify',
+    'html2js',
+    // 'cdnify',
     'cssmin',
     'uglify',
     'filerev',

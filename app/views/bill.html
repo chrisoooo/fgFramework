@@ -1,0 +1,99 @@
+<!-- 工具栏 -->
+<legend>票据</legend>
+<div class="row" style="margin:15px 0px">
+  <div class="col-sm-12">
+    <div class="btn-group">
+      <a class="btn btn-success btn-sm" ng-click="applyNewModal()">
+        <span class="glyphicon glyphicon-plus" tooltip="申请"></span> 申请票据
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="row" id="tabContent"  style="margin:15px 0px">
+  <div class="col-sm-12">
+    <table class="table table-bordered table-hover table-condensed">
+      <thead>
+        <tr>
+          <th class="check"><input type="checkbox" ng-model="allChecked" ng-click="selectAll();"></th>
+          <th>序号</th>
+          <th>票据号</th>
+          <th>系统流水号</th>
+          <th>领用人</th>
+          <th>领用时间</th>
+          <th>是否有效</th>
+          <th>是否作废</th>
+          <th>是否补打</th>
+          <th>决定书编号</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="record in records">
+          <td class="check"><input type="checkbox" ng-model="checks[$index]" ng-click="select($index);"></td>
+          <td>{{$index+1}}</td>
+          <td>{{record.noteId}}</td>
+          <td>{{record.seqNo}}</td>
+          <td>{{record.receiveUser}}</td>
+          <td>{{record.receiveTime}}</td>
+          <td>
+            <span ng-class="{'0': 'yhte-ico-danger','1': 'yhte-ico-success'}['{{record.isValid}}']">{{record.isValid}}  </span>
+            </td>
+          <td>
+            <span ng-class="{'0': 'yhte-ico-danger','1': 'yhte-ico-success'}['{{record.isValid}}']">{{record.isRevoke}}</span></td>
+          <td>
+            <span ng-class="{'0': 'yhte-ico-danger','1': 'yhte-ico-success'}['{{record.isValid}}']">{{record.isReprint}}  </span></td>
+          <td>{{record.jdsbh}}</td>
+          <td><i class="fa fa-money yhte-ico-success" ng-click=""> 作废</i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div pagination class="pagination-sm pull-right" boundary-links="true" rotate="false" 
+      total-items="total"
+      page="Q.page" 
+      items-per-page="Q.limit"
+      max-size="5"
+      on-select-page="pChange(page)"
+      previous-text="上一页"
+      next-text="下一页"
+      last-text="最后一页"
+      first-text="最前一页">
+    </div>
+  </div>
+</div>
+<!-- s申请票据 -->
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 1000px;">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+            <h4 id="myModalLabel" class="modal-title"> 申请票据
+            </h4>
+        </div>
+        <div class="modal-body" style="">
+            <div class="input-group"> 
+              <span class="input-group-addon">票据号 从</span>
+              <input type="text" class="form-control" ng-model="qbill.start"/>
+              <span class="input-group-addon">到</span>
+              <input type="text" class="form-control" ng-model="qbill.end"/>
+            </div>
+        </div>
+        <div class="modal-footer" style="">
+          <div class="btn-group">
+              <a class="btn btn-default btn-sm"  data-dismiss="modal">
+              <i class="fa fa-time"> 关闭</i></a>
+              <a class="btn btn-success btn-sm" ng-click="applyNew()">
+                <span class="glyphicon glyphicon-check"></span> 确定
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+

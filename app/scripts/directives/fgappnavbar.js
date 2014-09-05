@@ -49,8 +49,19 @@ angular.module('wsdcApp')
           children: [{
             menuName: '用户管理'
           }]
+        },{
+          menuName: '银行缴费',
+          children: [{
+             path: '#/IllegalRecord',
+            menuName: '违法记录'
+          },{
+            path: '#/Bill',
+            menuName: '票据管理'
+          },{
+            path: '#/Login',
+            menuName: '登录'
+          }]
         }];
-
       }
     };
   });

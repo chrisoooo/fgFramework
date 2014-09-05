@@ -170,14 +170,13 @@ div[fg-notification-center] {
   font-size: 13px;
 }
 
-.widget .widget-body p {
-  border-top: solid #555 1px;
+.widget .widget-body .list-item {
   margin: 0;
   padding: 6px 0;
 }
 
-.widget .widget-body p:first-child {
-  border-top: none;
+.widget .widget-body .top-divider {
+  border-top: solid #555 1px;
 }
 
 ul.messenger.messenger-fixed.messenger-on-top {
@@ -207,3 +206,4 @@ ul.messenger.messenger-fixed.messenger-on-top.messenger-on-right, ul.messenger.m
   border-radius: 0;
   box-shadow: none;
 }
+

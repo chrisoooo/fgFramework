@@ -19,7 +19,10 @@
 		});
 
 * `2014.09.03`添加 directive:fgJstree v0.1；
-* `2014.09.03`集成 dangular-loading-bar；
+* `2014.09.04`集成 angular-loading-bar；
+* `2014.09.04`添加 service:fgSocket；
+* `2014.09.04`统一的 ajax 请求操作提示，通过 fghttpinterceptor.js；
+* `2014.09.05`集成 grunt-html2js；
 
 # 使用说明
 

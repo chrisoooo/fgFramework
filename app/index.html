@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="bower_components/jstree/dist/themes/default/style.css" />
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
     <!-- endbower -->
+    <link rel="stylesheet" href="bower_components/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="bower_components/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
@@ -68,27 +68,32 @@
     <script src="bower_components/jstree/dist/jstree.js"></script>
     <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <!-- endbower -->
+    <script src="bower_components/websocket/socket.io/socket.io.js"></script>
+    <script src="bower_components/websocket/moment.min.js"></script>
+
+    <script src="bower_components/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="bower_components/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <script src="bower_components/openlayers/2.13-rc5/OpenLayers.js"></script>
+    <script src="bower_components/openlayers/yhte/ExDyLayer2.js"></script>
+    <script src="bower_components/openlayers/yhte/ExMeasure.js"></script>
+    <script src="bower_components/openlayers/yhte/ExPanel.js"></script>
+    <script src="bower_components/openlayers/yhte/ExSelectFeature2.js"></script>
+    <script src="bower_components/openlayers/yhte/ExVector.js"></script>
+    <script src="bower_components/openlayers/yhte/GetCoordinate.js"></script>
+    <script src="bower_components/openlayers/yhte/GMapLayer.js"></script>
+    <script src="bower_components/openlayers/yhte/LinearFunc.js"></script>
+    <script src="bower_components/openlayers/yhte/PathTrack.js"></script>
+    <script src="bower_components/openlayers/yhte/PGisLayer.js"></script>
+    <script src="bower_components/openlayers/yhte/iMap.js"></script>
+    <script src="bower_components/openlayers/yhte/geoSetup.js"></script>
+    <script src="bower_components/openlayers/yhte/ExStyles.js"></script>
+    <script src="bower_components/openlayers/yhte/ExDrawPath.js"></script>
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="bower_components/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-        <script src="bower_components/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
-        <script src="bower_components/openlayers/2.13-rc5/OpenLayers.js"></script>
-        <script src="bower_components/openlayers/yhte/ExDyLayer2.js"></script>
-        <script src="bower_components/openlayers/yhte/ExMeasure.js"></script>
-        <script src="bower_components/openlayers/yhte/ExPanel.js"></script>
-        <script src="bower_components/openlayers/yhte/ExSelectFeature2.js"></script>
-        <script src="bower_components/openlayers/yhte/ExVector.js"></script>
-        <script src="bower_components/openlayers/yhte/GetCoordinate.js"></script>
-        <script src="bower_components/openlayers/yhte/GMapLayer.js"></script>
-        <script src="bower_components/openlayers/yhte/LinearFunc.js"></script>
-        <script src="bower_components/openlayers/yhte/PathTrack.js"></script>
-        <script src="bower_components/openlayers/yhte/PGisLayer.js"></script>
-        <script src="bower_components/openlayers/yhte/iMap.js"></script>
-        <script src="bower_components/openlayers/yhte/geoSetup.js"></script>
-        <script src="bower_components/openlayers/yhte/ExStyles.js"></script>
-        <script src="bower_components/openlayers/yhte/ExDrawPath.js"></script>
-    
+        <script src="scripts/services/fgsocket.js"></script>
+        <script src="scripts/templates.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
@@ -105,6 +110,7 @@
         <script src="scripts/directives/fgjstree.js"></script>
         <script src="scripts/controllers/bill.js"></script>
         <script src="scripts/controllers/illegalrecord.js"></script>
+        <script src="scripts/services/fghttpinterceptor.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -29,7 +29,8 @@
     "karma-jasmine": "~0.1.5",
     "grunt-karma": "~0.8.3",
     "karma-phantomjs-launcher": "~0.1.4",
-    "grunt-connect-proxy": "~0.1.11"
+    "grunt-connect-proxy": "~0.1.11",
+    "grunt-html2js": "~0.2.8"
   },
   "engines": {
     "node": ">=0.10.0"

@@ -18,7 +18,9 @@ angular
     'ngTouch',
     'restangular',
     'ui.bootstrap',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'fg',
+    'templates-templates'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -68,6 +70,13 @@ angular
   })
   .config(function (RestangularProvider){
     RestangularProvider.setBaseUrl('/java');
+    RestangularProvider.setDefaultHeaders({restangular: true});
+  })
+  .config(function (fgSocketProvider){
+    fgSocketProvider.setUrl('http://127.0.0.1:3000');
+  })
+  .config(function ($httpProvider){
+    $httpProvider.interceptors.push('fgHttpInterceptor');
   })
   .run(['$rootScope', '$location', 'fgMessenger', function ($rootScope, $location, fgMessenger) {
     $rootScope.$on('$viewContentLoaded', function () {

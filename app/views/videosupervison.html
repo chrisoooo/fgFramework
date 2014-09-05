@@ -1,43 +1,47 @@
 <div fg-map></div>
 <div fg-notification-center class="auto-height">
 
-  <div class="widget">
+  <div class="widget" 
+    ng-switch on="videoWidget.viewStack">
     <div class="widget-title">
       视频列表
       <div class="pull-right">
-        <i class="fa fa-info-circle"></i>
+        <span 
+          ng-switch-when="tree" 
+          ng-click="videoWidget.viewStack='list'">
+          编辑
+        </span>
+        <span 
+          ng-switch-when="list"
+          ng-click="videoWidget.viewStack='tree'">
+          完成
+        </span>
+        <span 
+          ng-switch-when="new"
+          ng-click="videoWidget.viewStack='list'">
+          取消
+        </span>
       </div>
     </div>
-    <div class="widget-body">
-      <div fg-jstree ng-model="model" node="record.node" selected="record.nodes">
+    <div class="widget-body" style="padding-left:10px;" >
+      <!-- tree view -->
+      <div fg-jstree ng-model="model" node="record.node" selected="record.nodes" ng-switch-when="tree">
       </div>
-    </div>
-  </div>
-
-  <div class="widget">
-    <div class="widget-title">
-      视频列表
-      <div class="pull-right">
-        完成
-      </div>
-    </div>
-    <div class="widget-body" style="padding-left:10px;">
-      <table style="width: 100%;">
+      
+      <!-- table view -->
+      <table style="width: 100%;" ng-switch-when="list">
         <tbody>
-          <tr>
+          <tr ng-repeat="group in groups">
             <td style="width: 25px; text-align: center;">
-              <!-- <i class="fa fa-minus-circle"></i> -->
+              <!-- 删除分组 -->
+              <i class="fa fa-minus-circle yhte-ico-danger-bright"
+                style="font-size: 1.2em;" 
+                ng-if="$last" 
+                ng-click="deleteGroup(group);"></i>
             </td>
             <td>
-              <p>分组 1</p>
-            </td>
-          </tr>
-          <tr>
-            <td  style="width: 25px; text-align: center;padding-top:3px;">
-              <i class="fa fa-minus-circle yhte-ico-danger-bright" style="font-size: 1.2em;"></i>
-            </td>
-            <td>
-              <p style="border-top: solid #555 1px;">分组 2</p>
+              <!-- 第一个 item 不显示 border-top -->
+              <p class="list-item" ng-class="{'top-divider':!$first}">{{group.text}}</p>
             </td>
           </tr>
           <tr>
@@ -45,34 +49,23 @@
               <i class="fa fa-plus-circle yhte-ico-success-bright" style="font-size: 1.2em;"></i>
             </td>
             <td>
-              <p style="border-top: solid #555 1px;font-size: 12px;color:#aaa;">添加</p>
+              <!-- item 个数大于 0 时才显示 border-top -->
+              <p class="list-item" ng-class="{'top-divider': groups.length>0}" style="font-size: 12px;color:#aaa;" ng-click="videoWidget.viewStack='new'">添加</p>
             </td>
           </tr>
         </tbody>
       </table>
-    </div>
-  </div>
-
-  <div class="widget">
-    <div class="widget-title">
-      视频列表
-      <div class="pull-right">
-        取消
-      </div>
-    </div>
-    <div class="widget-body">
-      <div>
-        <p style="font-size: 10px;color: #aaa;">输入车牌号码</p>
+      
+      <!-- form view -->
+      <div style="padding:0 0 0 25px;" ng-switch-when="new">
+        <p style="font-size: 8px;color: #aaa;">输入分组名称</p>
         <div style="padding-right:35px;margin-bottom: 8px;">
-          <input type="text" placeholder="搜索" 
-          style="background-color: #444;border: solid 1px #555;width:100%;padding: 0 20px;border-radius: 3px;">  
+          <input type="text" placeholder="名称" ng-model="group.name"
+          style="background-color: #444;border: solid 1px #555;width:100%;padding: 0 20px;border-radius: 3px;" ng-keypress="addGroup($event);">  
         </div>
-        <p style="font-size: 10px;color: #aaa;padding: 3px 0;">找不到结果。</p>
-        <p style="font-size: 10px;color: #aaa;padding: 3px 0;">正在查询车辆...</p>
-        <p style="font-size: 10px;color: #aaa;padding: 3px 0;">苏E00000</p>
-        <p style="font-size: 10px;color: #aaa;padding: 3px 0;">苏E00002</p>
-        <p style="font-size: 10px;color: #aaa;padding: 3px 0;">苏E00001</p>
+        <p style="font-size: 10px;color: #aaa;padding: 3px 0;">不能为空，按「回车」确认。</p>
       </div>
+
     </div>
   </div>
 
